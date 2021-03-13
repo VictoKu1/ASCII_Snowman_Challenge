@@ -27,29 +27,66 @@ namespace ariel{
     std::string snowman(int dna){
         const int minimalBorderOfLegitDna = 11111110;
         const int maximalBorderOfLegitDna =44444445;
-        const int testSnowmanDna1 = 33232124;
-        const std::string testSnowmanBody1 ="   _\n  /_\\\n\\(o_O)\n (] [)>\n (   )";
-        const int testSnowmanDna2 =11114411;
-        const std::string testSnowmanBody2 ="_===_\n(.,.)\n( : )\n( : )";
-        const int testSnowmanDna3 = 11112311;
-        const std::string testSnowmanBody3 =" _===_\n\\(.,.)\n ( : )\\\n ( : )";
-        const int invalidValue5 = 5 ;
         const std::string genericString="Output.";
-        if(dna==testSnowmanDna1){
-            return testSnowmanBody1;
-        }else if(dna ==testSnowmanDna2){
-            return testSnowmanBody2;
-        }else if(dna== testSnowmanDna3){
-            return testSnowmanBody3;
-        }else if(dna== invalidValue5){
-            throw std::invalid_argument{"Invalid code '5'"};
-        }else if(dna>minimalBorderOfLegitDna&&dna<maximalBorderOfLegitDna&&isBase3(dna)){
-                return genericString;
+        if(dna>minimalBorderOfLegitDna&&dna<maximalBorderOfLegitDna&&isBase3(dna)){
+                return buildSnowman(dna);
         }else{
-                throw std::invalid_argument{"Invalid code ."};
+                throw std::invalid_argument{"Invalid code '5'"};
             }
         return genericString ;
     }
+    std::string buildSnowman(int dna){
+        std::string mainMatrix[5][7]={};
+        const mainMatrix[0][0]="";
+        const mainMatrix[0][6]="";
+        const mainMatrix[1][0]="";
+        const mainMatrix[1][6]="";
+        const mainMatrix[2][1]="(";
+        const mainMatrix[2][5]=")";
+        const mainMatrix[3][1]="(";
+        const mainMatrix[3][5]=")";
+        const mainMatrix[4][1]="(";
+        const mainMatrix[4][5]=")";
+        const mainMatrix[4][0]="";
+        const mainMatrix[4][6]="";
+        const std::string H[4][2][5]={"","","","","",
+                                "_","=","=","=","_",
+                                " ","_","_","_"," ",
+                                ".",".",".",".",".",
+                                " "," ","_"," "," ",
+                                " ","/","_","\\"," ",
+                                " ","_","_","_"," ",
+                                "(","_","*","_",")"};
+        const std::string N[4]={",",".","_",""};
+        const std::string E[4]={".","o","O","-"}; //*E for Eye, instead of two equal matrises R & L.
+        const std::string X[4][1][2]={"",
+                                "<",
+                                "\\",
+                                "",
+                                "",
+                                "/",
+                                "",
+                                "",};
+        const std::string Y[4][1][2]={"",
+                                ">",
+                                "/",
+                                "",
+                                "",
+                                "\\",
+                                "",
+                                "",};
+        const std::string T[4][1][3]={" ","."," ",
+                                      "]"," ","[",
+                                      ">"," ","<",
+                                      " "," "," "};                       
+        const std::string B[4][1][3]={" ",":"," ",
+                                      "\""," ","\"",
+                                      "_","_","_",
+                                      " "," "," "};
+                                      
+
+    }
+
 }
 
 
