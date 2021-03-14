@@ -62,15 +62,14 @@ namespace ariel{
                                                     {">"," ","\\"," "}}};
         std::array<std::string,4>T={" : ","] [","> <","   "};
         std::array<std::string,4>B={" : ","\" \"","___","   "};
-        std::string snowman =" "+H[h][0]+" \n"
-                            +" "+H[h][1]+" \n"
-                            +X[x][0]+"("+E[l]+N[n]+E[r]+")"+Y[y][0]+"\n"
-                            +X[x][1]+"("+T[t]+")"+Y[y][1]+"\n"
+        std::string snowman =" "+H[0][h]+" \n"
+                            +" "+H[1][h]+" \n"
+                            +X[0][x]+"("+E[l]+N[n]+E[r]+")"+Y[0][y]+"\n"
+                            +X[1][x]+"("+T[t]+")"+Y[1][y]+"\n"
                             +" ("+B[b]+") \n";                         
         return snowman;
     }
 
 }
-
 
 
