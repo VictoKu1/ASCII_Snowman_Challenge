@@ -12,6 +12,9 @@ run: test
 test: TestRunner.o StudentTest1.o StudentTest2.o StudentTest3.o $(OBJECTS)
 	$(CXX) $(CXXFLAGS) $^ -o test
 
+main: main.o $(OBJECTS)
+	$(CXX) $(CXXFLAGS) $^ -o main
+
 %.o: %.cpp $(HEADERS)
 	$(CXX) $(CXXFLAGS) --compile $< -o $@
 
@@ -30,3 +33,7 @@ tidy:
 clean:
 	rm -f *.o test
 	rm -f StudentTest*.cpp
+
+
+
+
