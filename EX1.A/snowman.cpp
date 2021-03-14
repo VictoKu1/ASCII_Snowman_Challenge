@@ -1,4 +1,5 @@
 #include "snowman.hpp"
+#include <array>
 bool isBase3(int num){
     const int downgradeConstantSoTheNumberWillBeModuloThree = 11111111;
     if(num<0){
@@ -31,107 +32,44 @@ namespace ariel{
         if(dna>minimalBorderOfLegitDna&&dna<maximalBorderOfLegitDna&&isBase3(dna)){
                 return buildSnowman(dna);
         }else{
-                throw std::invalid_argument{"Invalid code '5'"};
+                throw std::invalid_argument{"Invalid code '"+std::to_string(dna)+"'"};
             }
         return genericString ;
     }
-    std::string buildSnowman(int dna){
-        std::string mainMatrix[5][7]={};
-        const mainMatrix[0][0]="";
-        const mainMatrix[0][6]="";
-        const mainMatrix[1][0]="";
-        const mainMatrix[1][6]="";
-        const mainMatrix[2][1]="(";
-        const mainMatrix[2][5]=")";
-        const mainMatrix[3][1]="(";
-        const mainMatrix[3][5]=")";
-        const mainMatrix[4][1]="(";
-        const mainMatrix[4][5]=")";
-        const mainMatrix[4][0]="";
-        const mainMatrix[4][6]="";
-        const std::string H[4][2][5]={"","","","","",
-                                "_","=","=","=","_",
-                                " ","_","_","_"," ",
-                                ".",".",".",".",".",
-                                " "," ","_"," "," ",
-                                " ","/","_","\\"," ",
-                                " ","_","_","_"," ",
-                                "(","_","*","_",")"};
-        const std::string N[4]={",",".","_",""};
-        const std::string E[4]={".","o","O","-"}; //*E for Eye, instead of two equal matrises R & L.
-        const std::string X[4][2][1]={"",
-                                "<",
-                                "\\",
-                                "",
-                                "",
-                                "/",
-                                "",
-                                "",};
-        const std::string Y[4][2][1]={"",
-                                ">",
-                                "/",
-                                "",
-                                "",
-                                "\\",
-                                "",
-                                "",};
-        const std::string T[4][1][3]={" ","."," ",
-                                      "]"," ","[",
-                                      ">"," ","<",
-                                      " "," "," "};                       
-        const std::string B[4][1][3]={" ",":"," ",
-                                      "\""," ","\"",
-                                      "_","_","_",
-                                      " "," "," "};
-        constructSnowmanMatrix(mainMatrix,H,N,E,X,Y,T,B,dna);
-        // removeBlankLinesIfExist(mainMatrix,dna);
-        return matrixToString(mainMatrix);                              
+    std::string buildSnowman(int HNLRXYTB){
+        const int b=(HNLRXYTB%10)-1 ;
+        HNLRXYTB/=10;
+        const int t=(HNLRXYTB%10)-1 ;
+        HNLRXYTB/=10;
+        const int y=(HNLRXYTB%10)-1 ;
+        HNLRXYTB/=10;
+        const int x=(HNLRXYTB%10)-1 ;
+        HNLRXYTB/=10;
+        const int r=(HNLRXYTB%10)-1 ;
+        HNLRXYTB/=10;
+        const int l=(HNLRXYTB%10)-1 ;
+        HNLRXYTB/=10;
+        const int n=(HNLRXYTB%10)-1 ;
+        HNLRXYTB/=10;
+        const int h=(HNLRXYTB%10)-1 ;
+        std:array<std:array<std::string,4>,2>H={{"     "," ___ ","  _  "," ___ "},
+                                                {"_===_","....."," /_\\ ","(_*_)"}};
+        std:array<std::string,4>N={",",".","_"," "};
+        std:array<std::string,4>E={".","o","O","-"};//*E for Eye, instead of two equal matrises R & L.
+        std:array<std:array<std::string,4>,2>X={{" ","\\"," "," "},
+                                                {"<"," ","/"," "}};
+        std:array<std:array<std::string,4>,2>Y={{" ","/"," "," "},
+                                                {">"," ","\\"," "}};
+        std:array<std::string,4>T={" : ","] [","> <","   "};
+        std:array<std::string,4>B={" : ","\" \"","___","   "};
+        std::string snowman =" "+H[h][0]+" \n"
+                            +" "+H[h][1]+" \n"
+                            +X[x][0]+"("+E[l]+N[n]+E[r]+")"+Y[y][0]+"\n"
+                            +X[x][1]+"("+T[t]+")"+Y[y][1]+"\n"
+                            +" ("+B[b]+") \n";                         
+        return snowman;
     }
-        void constructSnowmanMatrix(std::string mainMatrix[5][7],std::string H[4][2][5],std::string N [4],std::string E[4],std::string X[4][2][1],std::string Y[4][2][1],std::string T[4][1][3],std::string B[4][1][3],int dna){
-            put(mainMatrix,4,2,B[dna%10],3,3;
-            dna = dna/10;
-            put(mainMatrix,3,2,T[dna%10],3,3);
-            dna = dna/10;
-            put(mainMatrix,2,6,Y[dna%10],1,2);
-            dna = dna/10;
-            put(mainMatrix,2,0,X[dna%10],1,2);
-            dna = dna/10;
-            put(mainMatrix,2,4,E[dna%10],1,1);
-            dna = dna/10;
-            put(mainMatrix,2,2,E[dna%10],1,1);
-            dna = dna/10;
-            put(mainMatrix,2,3,N[dna%10],1,1);
-            dna = dna/10;
-            put(mainMatrix,0,1,H[dna%10],5,10);
-        }
-        void put(std::string mainMatrix[5][7],int x,int y,std::string arr[],int amountInRow, int length){
-            
-        }
-        // void removeBlankLinesIfExist(std::string mainMatrix[5][7],int dna){
-        //     int marker = 0 ;
-        //     if ((dna/100)%10==4){
-        //         marker=(marker*10)+1;
-        //     }
-        //     if ((dna/1000)%10==4){
-        //         marker=(marker*10)+2;
-        //     }
-        //     if ((dna/10000000)%10==1){
-        //         marker=(marker*10)+3;
-        //     }
-             
-        // }
-        std::string matrixToString(std::string mainMatrix[5][7]){
-            std::string snowman="" ;
-            for (int i=0;i<5;i++){
-                for(int j = 0;j<7;j++){
-                    if(i==4){
-                        snowman = snowman+mainMatrix[i][j]+"\n";
-                    }
-                    snowman = snowman+mainMatrix[i][j];
-                }
-            }
-            return snowman ;
-        }
+
 }
 
 
