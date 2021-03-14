@@ -28,30 +28,28 @@ namespace ariel{
     std::string snowman(int dna){
         const int minimalBorderOfLegitDna = 11111110;
         const int maximalBorderOfLegitDna =44444445;
-        const std::string genericString="Output.";
-        if(dna>minimalBorderOfLegitDna&&dna<maximalBorderOfLegitDna&&isBase3(dna)){
-                return buildSnowman(dna);
-        }else{
-                throw std::invalid_argument{"Invalid code '"+std::to_string(dna)+"'"};
-            }
-        return genericString ;
+        if(!(dna>minimalBorderOfLegitDna&&dna<maximalBorderOfLegitDna&&isBase3(dna))){
+            throw std::invalid_argument{"Invalid code '"+std::to_string(dna)+"'"};
+        }
+        return buildSnowman(dna);
     }
     std::string buildSnowman(int HNLRXYTB){
-        const int b=(HNLRXYTB%10)-1 ;
-        HNLRXYTB/=10;
-        const int t=(HNLRXYTB%10)-1 ;
-        HNLRXYTB/=10;
-        const int y=(HNLRXYTB%10)-1 ;
-        HNLRXYTB/=10;
-        const int x=(HNLRXYTB%10)-1 ;
-        HNLRXYTB/=10;
-        const int r=(HNLRXYTB%10)-1 ;
-        HNLRXYTB/=10;
-        const int l=(HNLRXYTB%10)-1 ;
-        HNLRXYTB/=10;
-        const int n=(HNLRXYTB%10)-1 ;
-        HNLRXYTB/=10;
-        const int h=(HNLRXYTB%10)-1 ;
+        const int ten = 10; //* To take the digits out of HNLRXYTB we need to take a modulo of ten to retreive the last number and divide by ten to get access to the next last number.
+        const int b=(HNLRXYTB%ten)-1 ;
+        HNLRXYTB/=ten;
+        const int t=(HNLRXYTB%ten)-1 ;
+        HNLRXYTB/=ten;
+        const int y=(HNLRXYTB%ten)-1 ;
+        HNLRXYTB/=ten;
+        const int x=(HNLRXYTB%ten)-1 ;
+        HNLRXYTB/=ten;
+        const int r=(HNLRXYTB%ten)-1 ;
+        HNLRXYTB/=ten;
+        const int l=(HNLRXYTB%ten)-1 ;
+        HNLRXYTB/=ten;
+        const int n=(HNLRXYTB%ten)-1 ;
+        HNLRXYTB/=ten;
+        const int h=(HNLRXYTB%ten)-1 ;
         std::array<std::array<std::string,4>,2>H={{{"     "," ___ ","  _  "," ___ "},
                                                     {"_===_","....."," /_\\ ","(_*_)"}}};
         std::array<std::string,4>N={",",".","_"," "};
@@ -64,9 +62,9 @@ namespace ariel{
         std::array<std::string,4>B={" : ","\" \"","___","   "};
         std::string snowman =" "+H[0][h]+" \n"
                             +" "+H[1][h]+" \n"
-                            +X[0][x]+"("+E[l]+N[n]+E[r]+")"+Y[0][y]+"\n"
-                            +X[1][x]+"("+T[t]+")"+Y[1][y]+"\n"
-                            +" ("+B[b]+") \n";                         
+                            +X[0][x]+"("+E.at(l)+N.at(n)+E.at(r)+")"+Y[0][y]+"\n"
+                            +X[1][x]+"("+T.at(t)+")"+Y[1][y]+"\n"
+                            +" ("+B.at(b)+") \n";                         
         return snowman;
     }
 

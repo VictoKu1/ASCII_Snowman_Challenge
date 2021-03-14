@@ -25,7 +25,7 @@ StudentTest3.cpp: # Eviatar Nachshoni
 	curl https://raw.githubusercontent.com/EN555/EX1-c-/master/Test.cpp > $@
 
 tidy:
-	clang-tidy $(SOURCES) -checks=bugprone-*,clang-analyzer-*,cppcoreguidelines-*,performance-*,portability-*,readability-* --warnings-as-errors=* --
+	clang-tidy $(SOURCES) -checks=bugprone-*,clang-analyzer-*,cppcoreguidelines-*,performance-*,portability-*,readability-* --warnings-as-errors=*  -header-filter=.* 
 
 clean:
 	rm -f *.o test
