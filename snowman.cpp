@@ -24,6 +24,7 @@ bool isBase3(int num){
     }
     return true;
 }
+
 namespace ariel{
     std::string snowman(int dna){
         const int minimalBorderOfLegitDna = 11111110;
@@ -67,7 +68,7 @@ namespace ariel{
                             +" ("+B.at(b)+") \n";                         
         return snowman;
     }
-
 }
+
 
 
