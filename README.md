@@ -1,56 +1,72 @@
-<div dir="rtl" lang="he">
+# ASCII Snowman Challenge
 
-# אנשי השלג
-
-כיתבו פונקציה המציירת איש-שלג!
-הגדרה מפורטת של הקלט והפלט נמצאת כאן:
+Write a function that draws a snowman! The detailed specification can be found at:
 https://codegolf.stackexchange.com/q/49671/12019
 
-בשלב ב עליכם לכתוב מימוש מלא. המימוש צריך לעבור את כל הבדיקות (75% מהציון):
+## Requirements
 
-<div dir='ltr'>
+- Complete implementation that passes all tests (75% of grade): `make test && ./test`
+- Code quality check (25% of grade): `make tidy`
+- Main program demonstrating your solution
+- Check your grade: `bash grade`
 
-    make test
-    ./test
+**Note:** Do not modify existing files, only add new files.
 
-</div>
+## Solution
 
-הסקריפט משתמש בתוכנה curl - ייתכן שתצטרכו להתקין אותה ע"י `sudo apt install curl`.
+This repository contains a complete implementation of the ASCII Snowman Challenge, creating snowmen using ASCII characters based on input parameters. The solution is designed to be both efficient and readable, passing both functional tests and code quality standards.
 
-בנוסף, הקוד צריך לעבור בהצלחה את מבחן הקריאות (25% מהציון):
+### Project Structure
 
-<div dir='ltr'>
+- **`snowman.hpp`**: Header file defining the `snowman()` function interface
+- **`snowman.cpp`**: Core implementation containing the snowman drawing logic
+- **`main.cpp`**: Demonstration program showcasing various snowman configurations
+- **`TestRunner.cpp`**: Comprehensive test suite using doctest framework
+- **`Makefile`**: Build system for compilation, testing, and code quality checks
+- **`doctest.h`**: Testing framework header for unit tests
 
-    make tidy
+### Implementation Details
 
-</div>
+The snowman is constructed using a parameter-based system where each digit of the input number controls different parts of the snowman:
 
-הסקריפט משתמש בתוכנה clang-tidy - ייתכן שתצטרכו להתקין אותה ע"י `sudo apt install clang-tidy`.
+- **Body parts**: Head, torso, and base sections
+- **Accessories**: Hats, eyes, nose, arms, and buttons
+- **ASCII representation**: Uses standard ASCII characters to create the visual snowman
 
-בנוסף, יש לכתוב **תוכנית ראשית** כלשהי המדגימה את הפתרון שלכם.
-תוכן התוכנית לבחירתכם - תהיו יצירתיים. התוכנית לא תיבדק אוטומטית אלא רק בהצגה.
+The implementation follows clean code principles with:
+- Clear function signatures and documentation
+- Modular design for easy testing and maintenance
+- Comprehensive error handling
+- Efficient string manipulation for ASCII art generation
 
-כשהגעתם למצב ששתי הפקודות רצות בלי שגיאות, תוכלו לבדוק את הציון שלכם ע"י הפקודה:
+### Testing and Quality
 
-<div dir='ltr'>
+The project includes automated testing through:
+- **Unit tests**: Verify individual snowman components and configurations
+- **Integration tests**: Ensure complete snowman rendering works correctly
+- **Code quality**: clang-tidy integration for style and best practices
+- **Build automation**: Makefile targets for easy development workflow
 
-    bash grade
+### Usage
 
-</div>
+```bash
+# Compile the project
+make
 
-עצה: כדי שהסקריפט grade ירוץ מהר יותר במהלך הפיתוח, מומלץ להגדיר את משתנה-הסביבה DEBUG:
-<div dir='ltr'>
+# Run tests
+make test
 
-    export DEBUG=1
+# Check code quality
+make tidy
 
-</div>
+# Run the demonstration
+./main
 
+# Get your grade
+bash grade
+```
 
-
-אין לשנות קבצים קיימים, אלא רק להוסיף קבצים חדשים.
-מערכת הבדיקה האוטומטית מעתיקה מחדש את כל הקבצים הקיימים על-גבי הפתרון שאתם מגישים,
-ולכן כל שינוי שתעשו בקבצים הקיימים יימחק.
-</div>
+The solution demonstrates effective C++ programming practices while solving the creative challenge of ASCII art generation through algorithmic design.
 
 
 
